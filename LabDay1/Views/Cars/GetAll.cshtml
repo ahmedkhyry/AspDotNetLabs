@@ -1,0 +1,64 @@
+﻿@model List<CarModel>;
+
+@{
+    var cars = Model;
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Usage Duration</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @for (int i = 0; i < cars.Count; i++)
+    {
+        <tr>
+            <th scope="row">@(i + 1)</th>
+            <td>@cars[i].Model From @cars[i].Manufacturer</td>
+            <td>@((DateTime.Now - cars[i].FirstUseDate).Days/365) years.</td>
+            <td>@Html.Raw(cars[i].HtmlDescription)</td>
+                <td><a href="/cars/GetDetails?Manufacturer=@cars[i].Manufacturer&source=table" type="button" class="btn btn-info">Details</a></td>
+        </tr>
+    }
+    </tbody>
+
+</table>
+<hr />
+<ul>
+    @for (int i = 0; i < cars.Count; i++)
+    {
+        <li scope="row">@(i + 1)</li>
+        <li>@cars[i].Model From @cars[i].Manufacturer</li>
+        <li>@((DateTime.Now - cars[i].FirstUseDate).Days / 365) years.</li>
+        <li>@Html.Raw(cars[i].HtmlDescription)</li>
+        <li><a href="/cars/GetDetails?Manufacturer=@cars[i].Manufacturer&source=list" type="button" class="btn btn-info">Details</a></li>
+    }
+</ul>
+
+@*
+@{
+    void RenderBody(string bodyType)
+    {
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+        @for (int i = 0; i < books.Count; i++)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@books[i].Title</td>
+                <td>@books[i].Author</td>
+                <td><a href="/books/GetDetails?bookId=@books[i].Id&source=table">Details</a></td>
+            </tr>
+        }
+    }
+}*@

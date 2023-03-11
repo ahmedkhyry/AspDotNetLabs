@@ -1,0 +1,18 @@
+﻿@{
+    var car = Model.car;
+    var source = Model.source;
+}
+
+@if (source == "list")
+{
+    <h1>Source: List</h1>
+}
+else {
+<h1>Source: table</h1>
+}
+
+<figure class="figure">
+    <img src="https://picsum.photos/500" class="figure-img img-fluid rounded" alt="car" />
+    <figcaption class="figure-caption">@car.Model From @car.Manufacturer</figcaption>
+</figure>
+
