@@ -1,20 +1,15 @@
-﻿using LabDay2.Models.Domain;
-using LabDay2.Models.View;
+﻿global using LabDay2.Models.Domain;
+global using LabDay2.Models.View;
 using Microsoft.AspNetCore.Mvc;
-namespace LabDay2.Controllers;
 
+namespace LabDay2.Controllers;
 public class TicketController : Controller
 {
-    private List<Ticket> _tickets = Ticket.GetBooksList();
-    public IActionResult Index()
-    {
-        return View(_tickets);
-    }
+    private readonly List<Ticket> _tickets = Ticket.GetBooksList();
+    public IActionResult Index() => View(_tickets);
+    
     [HttpGet]
-    public IActionResult Add()
-    {
-        return View();
-    }
+    public IActionResult Add() => View();
 
     [HttpPost]
     public IActionResult Add(TicketVM ticketVM)

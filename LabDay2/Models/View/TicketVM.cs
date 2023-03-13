@@ -1,5 +1,4 @@
-﻿global using LabDay2.Models.Domain;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LabDay2.Models.View;
 

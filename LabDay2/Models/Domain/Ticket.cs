@@ -1,5 +1,4 @@
 ﻿namespace LabDay2.Models.Domain;
-
 public class Ticket
 {
     public DateTime CreatedDate { get; set; }
