@@ -1,0 +1,26 @@
+﻿@model List<Ticket>;
+
+<a class="mb-4 btn btn-warning" asp-action="Add">Open a Ticket 😢</a>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-subtitle mb-4 text-muted">Description: @item.Description</h3>
+                <h3 class="card-subtitle mb-4 text-danger">Severity: @item.Severity</h3>
+                <h3 class="card-subtitle mb-4 text-info" >Department: @item.Department.Name</h3>
+                <h3 class="card-subtitle mb-4 text-primary">Closed: @item.IsClosed</h3>
+            </div>
+        </div>
+    }
+</div>
+
+@using System.Text.Json;
+@{
+    var authorsJson = JsonSerializer.Serialize(Model);
+}
+
+<pre>
+    @authorsJson
+</pre>
